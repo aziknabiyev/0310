@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(1)->create();
+        if(!User::count()){
+            User::factory()->count(1)->create();
+        }
 
         Category::factory()
             ->has(Movie::factory()->count(3))
